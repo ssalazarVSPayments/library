@@ -33,6 +33,36 @@
               "zone.js/testing"
             ]
           }
+        },
+        "storybook": {
+          "builder": "@storybook/angular:start-storybook",
+          "options": {
+            "configDir": "projects/spartans-library/.storybook",
+            "browserTarget": "spartansLibrary:build",
+            "compodoc": true,
+            "compodocArgs": [
+              "-e",
+              "json",
+              "-d",
+              "projects/spartans-library"
+            ],
+            "port": 6006
+          }
+        },
+        "build-storybook": {
+          "builder": "@storybook/angular:build-storybook",
+          "options": {
+            "configDir": "projects/spartans-library/.storybook",
+            "browserTarget": "spartansLibrary:build",
+            "compodoc": true,
+            "compodocArgs": [
+              "-e",
+              "json",
+              "-d",
+              "projects/spartans-library"
+            ],
+            "outputDir": "dist/storybook/spartansLibrary"
+          }
         }
       }
     },
@@ -127,6 +157,36 @@
               "projects/storybook/src/styles.scss"
             ],
             "scripts": []
+          }
+        },
+        "storybook": {
+          "builder": "@storybook/angular:start-storybook",
+          "options": {
+            "configDir": "projects/storybook/.storybook",
+            "browserTarget": "storybook:build",
+            "compodoc": true,
+            "compodocArgs": [
+              "-e",
+              "json",
+              "-d",
+              "projects/storybook"
+            ],
+            "port": 6006
+          }
+        },
+        "build-storybook": {
+          "builder": "@storybook/angular:build-storybook",
+          "options": {
+            "configDir": "projects/storybook/.storybook",
+            "browserTarget": "storybook:build",
+            "compodoc": true,
+            "compodocArgs": [
+              "-e",
+              "json",
+              "-d",
+              "projects/storybook"
+            ],
+            "outputDir": "dist/storybook/storybook"
           }
         }
       }
