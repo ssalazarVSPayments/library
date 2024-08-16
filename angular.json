@@ -28,10 +28,8 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "tsConfig": "projects/spartans-library/tsconfig.spec.json",
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ]
+            "karmaConfig": "karma.conf.js",
+            "polyfills": ["zone.js", "zone.js/testing"]
           }
         },
         "storybook": {
@@ -40,12 +38,7 @@
             "configDir": "projects/spartans-library/.storybook",
             "browserTarget": "spartansLibrary:build",
             "compodoc": true,
-            "compodocArgs": [
-              "-e",
-              "json",
-              "-d",
-              "projects/spartans-library"
-            ],
+            "compodocArgs": ["-e", "json", "-d", "projects/spartans-library"],
             "port": 6006
           }
         },
@@ -55,12 +48,7 @@
             "configDir": "projects/spartans-library/.storybook",
             "browserTarget": "spartansLibrary:build",
             "compodoc": true,
-            "compodocArgs": [
-              "-e",
-              "json",
-              "-d",
-              "projects/spartans-library"
-            ],
+            "compodocArgs": ["-e", "json", "-d", "projects/spartans-library"],
             "outputDir": "dist/storybook/spartansLibrary"
           }
         }
@@ -83,9 +71,7 @@
             "outputPath": "dist/storybook",
             "index": "projects/storybook/src/index.html",
             "browser": "projects/storybook/src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "projects/storybook/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -94,9 +80,7 @@
                 "input": "projects/storybook/public"
               }
             ],
-            "styles": [
-              "projects/storybook/src/styles.scss"
-            ],
+            "styles": ["projects/storybook/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -141,10 +125,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "projects/storybook/tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -153,9 +134,7 @@
                 "input": "projects/storybook/public"
               }
             ],
-            "styles": [
-              "projects/storybook/src/styles.scss"
-            ],
+            "styles": ["projects/storybook/src/styles.scss"],
             "scripts": []
           }
         },
@@ -165,12 +144,7 @@
             "configDir": "projects/storybook/.storybook",
             "browserTarget": "storybook:build",
             "compodoc": true,
-            "compodocArgs": [
-              "-e",
-              "json",
-              "-d",
-              "projects/storybook"
-            ],
+            "compodocArgs": ["-e", "json", "-d", "projects/storybook"],
             "port": 6006
           }
         },
@@ -180,12 +154,7 @@
             "configDir": "projects/storybook/.storybook",
             "browserTarget": "storybook:build",
             "compodoc": true,
-            "compodocArgs": [
-              "-e",
-              "json",
-              "-d",
-              "projects/storybook"
-            ],
+            "compodocArgs": ["-e", "json", "-d", "projects/storybook"],
             "outputDir": "dist/storybook/storybook"
           }
         }
