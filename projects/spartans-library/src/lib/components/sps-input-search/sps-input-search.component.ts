@@ -5,7 +5,7 @@ import { InputIconModule } from 'primeng/inputicon';
 import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
-  selector: 'app-search-spartan',
+  selector: 'sps-input-search',
   standalone: true,
   imports: [
     InputIconModule,
@@ -13,10 +13,10 @@ import { InputTextModule } from 'primeng/inputtext';
     InputTextModule,
     ReactiveFormsModule,
   ],
-  templateUrl: './search-spartan.component.html',
-  styleUrl: './search-spartan.component.css',
+  templateUrl: './sps-input-search.component.html',
+  styleUrl: './sps-input-search.component.css',
 })
-export class SearchSpartanComponent implements OnInit {
+export class SpsInputSearchComponent implements OnInit {
   public inputText: FormControl<string | null>;
   @Input() public inputLabel!: string;
   @Output() public readonly changeText: EventEmitter<string | null>;

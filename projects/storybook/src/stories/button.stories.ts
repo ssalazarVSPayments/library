@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 
-import { ButtonSpartanComponent } from 'spartansLibrary';
+import { SpsButtonComponent } from 'spartansLibrary';
 
 /**
- * Storybook metadata for the ButtonSpartanComponent.
+ * Storybook metadata for the SpsButtonComponent.
  *
- * @type {Meta<ButtonSpartanComponent>}
+ * @type {Meta<SpsButtonComponent>}
  */
-const meta: Meta<ButtonSpartanComponent> = {
+const meta: Meta<SpsButtonComponent> = {
   title: 'Buttons/Sample',
-  component: ButtonSpartanComponent,
+  component: SpsButtonComponent,
   tags: ['autodocs'],
   argTypes: {},
   args: {},
@@ -18,11 +18,11 @@ const meta: Meta<ButtonSpartanComponent> = {
 export default meta;
 
 /**
- * Type definition for a Story of ButtonSpartanComponent.
+ * Type definition for a Story of SpsButtonComponent.
  *
  * @typedef {Story}
  */
-type Story = StoryObj<ButtonSpartanComponent>;
+type Story = StoryObj<SpsButtonComponent>;
 
 /**
  * Primary button story with a solid color.

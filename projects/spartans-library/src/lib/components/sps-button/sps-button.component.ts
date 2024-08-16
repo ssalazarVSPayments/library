@@ -2,16 +2,16 @@ import { Component, Input } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 
 /**
- * Spartan button component.
+ * Smart button component.
  */
 @Component({
-  selector: 'app-button-spartan',
+  selector: 'sps-button',
   standalone: true,
   imports: [ButtonModule],
-  templateUrl: './button-spartan.component.html',
-  styleUrl: './button-spartan.component.scss',
+  templateUrl: './sps-button.component.html',
+  styleUrl: './sps-button.component.css',
 })
-export class ButtonSpartanComponent {
+export class SpsButtonComponent {
   /**
    * Button label.
    */

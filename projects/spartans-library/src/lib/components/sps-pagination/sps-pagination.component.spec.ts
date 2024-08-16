@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ButtonSpartanComponent } from './button-spartan.component';
+import { SpsPaginationComponent } from './sps-pagination.component';
 
-describe('ButtonSpartanComponent', () => {
-  let component: ButtonSpartanComponent;
-  let fixture: ComponentFixture<ButtonSpartanComponent>;
+describe('SpsPaginationComponent', () => {
+  let component: SpsPaginationComponent;
+  let fixture: ComponentFixture<SpsPaginationComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ButtonSpartanComponent]
+      imports: [SpsPaginationComponent]
     })
     .compileComponents();
-    
-    fixture = TestBed.createComponent(ButtonSpartanComponent);
+
+    fixture = TestBed.createComponent(SpsPaginationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

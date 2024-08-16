@@ -1,0 +1,18 @@
+<div class="flex justify-content-between">
+  <div>
+    <p-paginator
+      (onPageChange)="onPageChange($event)"
+      [first]="first || 0"
+      [rows]="rows"
+      [totalRecords]="totalRecords"
+      [showFirstLastIcon]="false"
+      [showJumpToPageDropdown]="false"
+    />
+  </div>
+
+  <div>
+    <span>Página: </span>
+    <p-inputNumber [(ngModel)]="page" />
+    <span> de {{ totalRecords / rows }}</span>
+  </div>
+</div>

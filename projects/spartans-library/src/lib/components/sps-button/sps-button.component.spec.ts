@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SearchSpartanComponent } from './search-spartan.component';
+import { SpsButtonComponent } from './sps-button.component';
 
-describe('SearchSpartanComponent', () => {
-  let component: SearchSpartanComponent;
-  let fixture: ComponentFixture<SearchSpartanComponent>;
+describe('SpsButtonComponent', () => {
+  let component: SpsButtonComponent;
+  let fixture: ComponentFixture<SpsButtonComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SearchSpartanComponent]
+      imports: [SpsButtonComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SearchSpartanComponent);
+    fixture = TestBed.createComponent(SpsButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
