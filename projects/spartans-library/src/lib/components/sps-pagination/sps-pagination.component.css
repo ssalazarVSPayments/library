@@ -1,0 +1,12 @@
+:host ::ng-deep .p-inputtext {
+  width: 4rem;
+}
+:host ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page,
+:host ::ng-deep .p-paginator .p-paginator-prev,
+:host ::ng-deep .p-paginator .p-paginator-next {
+  border-radius: 15px;
+}
+
+.select-page {
+  padding: 0.5rem 1rem;
+}

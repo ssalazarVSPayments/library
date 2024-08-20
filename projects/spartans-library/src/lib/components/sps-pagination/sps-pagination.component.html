@@ -1,18 +1,21 @@
-<div class="flex justify-content-between">
-  <div>
-    <p-paginator
-      (onPageChange)="onPageChange($event)"
-      [first]="first || 0"
-      [rows]="rows"
-      [totalRecords]="totalRecords"
-      [showFirstLastIcon]="false"
-      [showJumpToPageDropdown]="false"
+<div class="flex justify-content-between align-items-center">
+  <p-paginator
+    (onPageChange)="onPageChange($event)"
+    [first]="first"
+    [rows]="rows"
+    [totalRecords]="totalRecords"
+    [showFirstLastIcon]="false"
+    [showJumpToPageDropdown]="false"
+  />
+  <div class="select-page">
+    <span>Página </span>
+    <p-inputNumber
+      [variant]="filled ? 'filled' : 'outlined'"
+      [formControl]="inputPage"
+      [min]="1"
+      [max]="pageCount"
+      [allowEmpty]="false"
     />
-  </div>
-
-  <div>
-    <span>Página: </span>
-    <p-inputNumber [(ngModel)]="page" />
-    <span> de {{ totalRecords / rows }}</span>
+    <span> de {{ pageCount }}</span>
   </div>
 </div>
