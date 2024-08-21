@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { action } from '@storybook/addon-actions'; // {{ edit_1 }}
+import { fn } from '@storybook/test';
 
 import { SpsPaginationComponent } from 'spartansLibrary';
 
@@ -15,7 +15,7 @@ const meta: Meta<SpsPaginationComponent> = {
   args: {
     rows: 10,
     totalRecords: 120,
-    changePage: action('changePage'),
+    changePage: fn(),
   },
 };
 

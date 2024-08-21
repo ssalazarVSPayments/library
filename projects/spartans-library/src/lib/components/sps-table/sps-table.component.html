@@ -1,4 +1,5 @@
 <p-table
+  #spstable
   [columns]="cols"
   [value]="items"
   [tableStyle]="{ 'min-width': '50rem' }"
@@ -10,13 +11,37 @@
           {{ col.header }}
         </th>
       }
+      @if (options) {
+        <th>{{ options | titlecase }}</th>
+      }
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-rowData let-columns="columns">
     <tr>
       @for (col of columns; track $index) {
         <td>
-          {{ rowData[col.field] }}
+          @if (col.field === 'status') {
+            @if (statusSelector[rowData[col.field]]) {
+              <p-tag
+                [value]="rowData[col.field]"
+                [rounded]="true"
+                [severity]="statusSelector[rowData[col.field]].severity"
+                [icon]="statusSelector[rowData[col.field]].icon"
+              />
+            }
+          } @else {
+            {{ rowData[col.field] || '-' }}
+          }
+        </td>
+      }
+      @if (options) {
+        <td>
+          <p-button
+            (onClick)="onOptionSelect(rowData, $event)"
+            icon="pi pi-ellipsis-h"
+            [plain]="true"
+            [text]="true"
+          />
         </td>
       }
     </tr>
