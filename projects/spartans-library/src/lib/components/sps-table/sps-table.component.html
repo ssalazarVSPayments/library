@@ -23,7 +23,7 @@
           @if (col.field === 'status') {
             @if (statusSelector[rowData[col.field]]) {
               <p-tag
-                [value]="rowData[col.field]"
+                [value]="rowData[col.field] | titlecase"
                 [rounded]="true"
                 [severity]="statusSelector[rowData[col.field]].severity"
                 [icon]="statusSelector[rowData[col.field]].icon"

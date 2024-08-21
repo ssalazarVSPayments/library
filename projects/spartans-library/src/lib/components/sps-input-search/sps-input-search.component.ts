@@ -18,7 +18,7 @@ import { InputTextModule } from 'primeng/inputtext';
 })
 export class SpsInputSearchComponent implements OnInit {
   public inputText: FormControl<string | null>;
-  @Input() public inputLabel!: string;
+  @Input() public placeholder!: string;
   @Output() public readonly changeText: EventEmitter<string | null>;
 
   constructor() {

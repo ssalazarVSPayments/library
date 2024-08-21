@@ -11,11 +11,17 @@ const meta: Meta<SpsInputSearchComponent> = {
   title: 'Inputs/InputSearch',
   component: SpsInputSearchComponent,
   tags: ['autodocs'],
-  argTypes: {},
-  args: {
-    inputLabel: 'Buscar',
-    changeText: action('text changed'),
+  argTypes: {
+    placeholder: {
+      control: 'text',
+      description: 'Placeholder for input',
+    },
+    changeText: {
+      type: 'function',
+      description: 'Event emitter',
+    },
   },
+  args: {},
 };
 
 export default meta;
@@ -31,5 +37,8 @@ type Story = StoryObj<SpsInputSearchComponent>;
  *
  */
 export const Basic: Story = {
-  args: {},
+  args: {
+    placeholder: 'Buscar',
+    changeText: action('text changed'),
+  },
 };
