@@ -1,0 +1,18 @@
+:host ::ng-deep .p-toolbar {
+  padding: 0px;
+}
+:host ::ng-deep .p-breadcrumb {
+  border: none;
+}
+:host ::ng-deep .p-contextmenu {
+  border-radius: 10px;
+}
+:host ::ng-deep .p-menuitem {
+  &:hover {
+    background-color: #673ab7; /* Highlight when clicked */
+    background: rgba(103, 58, 183, 0.24);
+    .p-menuitem-text {
+      color: var(--primary-color);
+    }
+  }
+}

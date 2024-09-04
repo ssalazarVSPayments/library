@@ -34,3 +34,9 @@ export type TableStatus = Record<
     icon: string;
   }
 >;
+
+export interface NodeListItem {
+  name: string;
+  path: string;
+  icon: string;
+}

@@ -1,0 +1,17 @@
+<app-layout-toolbar></app-layout-toolbar>
+<p-splitter
+  [panelSizes]="[25, 75]"
+  [style]="{ height: '100%' }"
+  styleClass="mb-5"
+>
+  <ng-template pTemplate>
+    <div class="w-full">
+      <app-layout-bar></app-layout-bar>
+    </div>
+  </ng-template>
+  <ng-template pTemplate>
+    <div class="w-full">
+      <app-layout-panel></app-layout-panel>
+    </div>
+  </ng-template>
+</p-splitter>

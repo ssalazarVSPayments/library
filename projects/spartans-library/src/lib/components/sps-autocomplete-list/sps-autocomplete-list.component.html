@@ -1,0 +1,29 @@
+@for (node of nodes; track $index) {
+  <div
+    class="flex p-2 align-items-center gap-2 selectable w-full mx-auto"
+    (click)="onSelect(node)"
+    (keyup)="onSelect(node)"
+    tabindex="0"
+  >
+    <i
+      class="pi text-sm"
+      [class]="node.icon"
+      style="color: var(--primary-color)"
+    ></i>
+    <div class="flex flex-column gap-1 node-label">
+      <span>{{ node.name }}</span>
+      <div
+        class="flex align-items-center gap-1 overflow-hidden text-overflow-ellipsis"
+      >
+        <span class="path" [appTooltip]="node.path">
+          {{ node.path }}
+        </span>
+      </div>
+    </div>
+  </div>
+}
+@if (totalNodes > nodes.length) {
+  <div class="text-center m-3">
+    <strong>{{ totalNodes - nodes.length }}</strong> resultados más encontrados
+  </div>
+}

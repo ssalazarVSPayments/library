@@ -1,0 +1,15 @@
+<div class="input-search">
+  <sps-input-search
+    placeholder="Buscar"
+    iconPosition="right"
+    (changeText)="onChangeText($event)"
+    [wFull]="true"
+  ></sps-input-search>
+</div>
+<div class="w-full">
+  @if (isSearching) {
+    <app-layout-list></app-layout-list>
+  } @else {
+    <app-layout-tree></app-layout-tree>
+  }
+</div>

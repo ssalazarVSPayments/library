@@ -1,0 +1,47 @@
+.node-label {
+  width: calc(100% - 2rem);
+}
+
+.selectable {
+  cursor: pointer; /* Makes the div clickable */
+
+  &:hover {
+    background-color: #f0f0f0; /* Highlight on hover */
+    background-color: #673ab7; /* Highlight when clicked */
+    background: rgba(103, 58, 183, 0.24);
+    border-radius: 10px;
+  }
+  &.active {
+    background-color: #673ab7; /* Highlight when clicked */
+  }
+}
+
+.path {
+  font-size: small;
+  color: grey;
+
+  overflow: hidden; /* Hide overflow */
+  text-overflow: ellipsis; /* Add ellipsis for overflowed text */
+  white-space: nowrap; /* Prevent text from wrapping */
+}
+
+.tooltip {
+  background-color: #3f4b5b;
+  color: white;
+  padding: 5px;
+  border-radius: 3px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.tooltip-triangle {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent; /* Left side of triangle */
+  border-right: 5px solid transparent; /* Right side of triangle */
+  border-bottom: 5px solid #3f4b5b; /* Bottom side of triangle (matches tooltip background) */
+  position: absolute;
+  top: -5px; /* Position triangle above the tooltip */
+  left: 30px; /* Center the triangle */
+  transform: translateX(-50%); /* Adjust for centering */
+}

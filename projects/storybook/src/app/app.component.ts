@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { SpsButtonComponent, SpsInputSearchComponent } from 'spartansLibrary';
+import { ExampleComponent } from './components/example/example.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, SpsButtonComponent, SpsInputSearchComponent],
+  imports: [RouterOutlet, ExampleComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
