@@ -1,5 +1,5 @@
 {
-  "name": "spartans-library",
+  "name": "@ssalazarVSPayments/spartans-library",
   "version": "0.0.4",
   "peerDependencies": {
     "@angular/common": "^17.3.0",
@@ -9,5 +9,18 @@
   "dependencies": {
     "tslib": "^2.3.0"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/servandoSalazarValle/library.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/servandoSalazarValle/library/issues"
+  },
+  "homepage": "https://github.com/servandoSalazarValle/library#readme",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  }
 }
