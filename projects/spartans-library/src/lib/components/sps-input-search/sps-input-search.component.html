@@ -1,10 +1,86 @@
-<p-iconField [iconPosition]="iconPosition">
-  <p-inputIcon styleClass="pi pi-search" />
-  <input
-    type="text"
-    pInputText
-    [placeholder]="placeholder"
-    [formControl]="inputText"
-    [class]="{ 'w-full': wFull }"
-  />
-</p-iconField>
+<div
+  [ngClass]="{
+    'input-wrapper': true,
+    'w-full': wFull,
+    error: inputText.invalid && inputText.touched,
+  }"
+>
+  <!-- Si floatLabel está activo -->
+  <ng-container *ngIf="floatLabel; else noFloatLabel">
+    <p-floatLabel>
+      <input
+        type="text"
+        pInputText
+        id="sps-search"
+        [class.w-full]="wFull"
+        [placeholder]="placeholder"
+        [formControl]="inputText"
+        [attr.aria-describedby]="helperId"
+        (blur)="inputText.markAsTouched()"
+        [ngClass]="{ error: inputText.invalid && inputText.touched }"
+      />
+      <p-iconField [iconPosition]="iconPosition">
+        <p-inputIcon
+          [styleClass]="icon"
+          (click)="clearInput()"
+          [ngClass]="{
+            icon: true,
+            error: inputText.invalid && inputText.touched,
+          }"
+        ></p-inputIcon>
+      </p-iconField>
+      <label
+        for="sps-search"
+        [ngClass]="{
+          'float-label': true,
+          active: !!inputText.value,
+          error: inputText.invalid && inputText.touched,
+        }"
+      >
+        {{ placeholder }}
+      </label>
+    </p-floatLabel>
+  </ng-container>
+
+  <!-- Si no se usa floatLabel -->
+  <ng-template #noFloatLabel>
+    <p-iconField [iconPosition]="iconPosition">
+      <p-inputIcon
+        [styleClass]="icon"
+        (click)="clearInput()"
+        [ngClass]="{
+          icon: true,
+          error: inputText.invalid && inputText.touched,
+        }"
+      ></p-inputIcon>
+      <input
+        type="text"
+        pInputText
+        id="sps-search"
+        [class.w-full]="wFull"
+        [placeholder]="placeholder"
+        [formControl]="inputText"
+        [attr.aria-describedby]="helperId"
+        (blur)="inputText.markAsTouched()"
+        [ngClass]="{ error: inputText.invalid && inputText.touched }"
+      />
+    </p-iconField>
+  </ng-template>
+
+  <!-- Texto de ayuda -->
+  <small
+    *ngIf="!inputText.errors?.['minlength']"
+    id="{{ helperId }}"
+    class="helper-text"
+  >
+    {{ helperText }}
+  </small>
+
+  <!-- Mensaje de error -->
+  <small
+    *ngIf="inputText.touched && inputText.errors?.['minlength']"
+    class="error-message"
+  >
+    {{ errorMessage }}
+  </small>
+</div>

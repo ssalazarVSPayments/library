@@ -1,0 +1,33 @@
+.input-wrapper {
+  position: relative;
+  display: grid;
+
+  &.error {
+    .input {
+      border-color: #b00020;
+    }
+
+    .helper-text {
+      color: #b00020;
+    }
+  }
+}
+
+.helper-text {
+  font-size: 0.75rem;
+  color: #666;
+  margin-top: 4px;
+}
+
+.error-message {
+  color: #b00020;
+}
+
+.p-inputtext.error {
+  border-color: #b00020;
+}
+
+.icon-active {
+  color: #007bff;
+  cursor: pointer;
+}
