@@ -37,6 +37,8 @@ export class LayoutTreeComponent implements OnInit {
   public isDialogVisible!: boolean;
   public dialogHeader!: string;
 
+  public isModalDelete!: boolean;
+
   private messageService: MessageService = inject(MessageService);
   private confirmationService: ConfirmationService =
     inject(ConfirmationService);
@@ -62,11 +64,13 @@ export class LayoutTreeComponent implements OnInit {
   }
 
   private onUpdateSelected(): void {
+    this.isModalDelete = false;
     this.dialogHeader = `Editar ${this.selectedNode?.data.level}`;
     this.isDialogVisible = true;
   }
 
   private onDeleteSelected(): void {
+    console.log('here');
     this.confirmationService.confirm({
       message: `¿Está seguro que desea eliminar a ${this.selectedNode?.data.name}?`,
       header: `Eliminar ${this.selectedNode?.data.level}`,
@@ -75,14 +79,23 @@ export class LayoutTreeComponent implements OnInit {
       acceptLabel: 'Eliminar',
       rejectIcon: 'none',
       rejectLabel: 'Cancelar',
+      acceptButtonStyleClass: 'p-ripple p-element p-button-test p-component',
       rejectButtonStyleClass: 'p-button-text',
       accept: () => {
-        this.deleteNode();
+        // this.deleteNode();
+        console.log('test');
       },
     });
   }
 
+  private onDeletSelected(): void {
+    this.isModalDelete = true;
+    this.dialogHeader = `Eliminar ${this.selectedNode?.data.level}`;
+    this.isDialogVisible = true;
+  }
+
   private onCreateSelected(): void {
+    this.isModalDelete = false;
     this.isDialogVisible = true;
   }
 
@@ -100,7 +113,11 @@ export class LayoutTreeComponent implements OnInit {
         label: 'Eliminar',
         icon: 'pi pi-trash',
         command: (): void => {
-          this.onDeleteSelected();
+          console.log('eliminar');
+
+          // this.onDeleteSelected();
+
+          this.onDeletSelected();
         },
       },
     ];
