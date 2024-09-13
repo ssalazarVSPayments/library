@@ -1,7 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/angular';
+import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { action } from '@storybook/addon-actions';
 
 import { SpsInputSearchComponent } from 'spartansLibrary';
+import { HttpClientModule } from '@angular/common/http';
 
 /**
  * Storybook metadata for the SpsInputSearchComponent.
@@ -11,7 +12,20 @@ const meta: Meta<SpsInputSearchComponent> = {
   title: 'Inputs/InputSearch',
   component: SpsInputSearchComponent,
   tags: ['autodocs'],
+  decorators: [
+    moduleMetadata({
+      imports: [HttpClientModule],
+    }),
+  ],
   argTypes: {
+    apiUrl: {
+      type: 'string',
+      description: 'API URL',
+      table: {
+        category: 'Content',
+        defaultValue: { summary: 'https://api.example.com/search' },
+      },
+    },
     placeholder: {
       control: 'text',
       description: 'Placeholder for input',
@@ -125,6 +139,7 @@ export const Basic: Story = {
     placeholder: 'Buscar',
     changeText: action('text-changed'),
     onChange: action('input-changed'),
+    apiUrl: 'https://pokeapi.co/api/v2/pokemon',
   },
 };
 
@@ -132,6 +147,7 @@ export const Disabled: Story = {
   args: {
     placeholder: 'Buscar',
     disabled: true,
+    apiUrl: 'https://pokeapi.co/api/v2/pokemon',
   },
 };
 
@@ -139,6 +155,7 @@ export const FloatLabel: Story = {
   args: {
     placeholder: 'Buscar',
     floatLabel: true,
+    apiUrl: 'https://pokeapi.co/api/v2/pokemon',
   },
 };
 
@@ -146,6 +163,7 @@ export const FullWidth: Story = {
   args: {
     placeholder: 'Buscar',
     wFull: true,
+    apiUrl: 'https://pokeapi.co/api/v2/pokemon',
   },
 };
 
@@ -153,6 +171,7 @@ export const PositionIcon: Story = {
   args: {
     placeholder: 'Buscar',
     iconPosition: 'left',
+    apiUrl: 'https://pokeapi.co/api/v2/pokemon',
   },
 };
 
@@ -160,6 +179,7 @@ export const WithHelperText: Story = {
   args: {
     placeholder: 'Buscar',
     helperText: 'Helper text',
+    apiUrl: 'https://pokeapi.co/api/v2/pokemon',
   },
 };
 
@@ -168,5 +188,6 @@ export const WithError: Story = {
     placeholder: 'Buscar',
     error: true,
     errorMessage: 'Error message',
+    apiUrl: 'https://pokeapi.co/api/v2/pokemon',
   },
 };

@@ -18,7 +18,15 @@ import { FloatLabelModule } from 'primeng/floatlabel';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { InputTextModule } from 'primeng/inputtext';
-import { debounceTime } from 'rxjs/operators';
+import {
+  catchError,
+  debounceTime,
+  distinctUntilChanged,
+  switchMap,
+} from 'rxjs/operators';
+import { SearchService } from './search.service';
+import { of } from 'rxjs';
+import { HttpClientModule } from '@angular/common/http';
 
 /**
  * @public
@@ -60,10 +68,12 @@ import { debounceTime } from 'rxjs/operators';
     ReactiveFormsModule,
     CommonModule,
     FloatLabelModule,
+    HttpClientModule,
   ],
   templateUrl: './sps-input-search.component.html',
   styleUrls: ['./sps-input-search.component.css'],
   providers: [
+    SearchService,
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => SpsInputSearchComponent),
@@ -72,6 +82,7 @@ import { debounceTime } from 'rxjs/operators';
   ],
 })
 export class SpsInputSearchComponent implements OnInit {
+  @Input() public apiUrl: string;
   @Input() public iconPosition: 'left' | 'right';
   @Input() public placeholder: string;
   @Input() public wFull: boolean;
@@ -81,7 +92,8 @@ export class SpsInputSearchComponent implements OnInit {
   @Input() public errorMessage: string;
   @Input() public disabled: boolean;
   @Input() public floatLabel: boolean;
-  @Output() public readonly changeText: EventEmitter<string | null>;
+  @Output() public readonly changeText: EventEmitter<unknown>;
+  @Output() public readonly searchResult: EventEmitter<unknown>;
 
   public inputText: FormControl<string | null> = new FormControl<string | null>(
     '',
@@ -101,7 +113,8 @@ export class SpsInputSearchComponent implements OnInit {
    * @memberof SpsInputSearchComponent
    * @description Constructor of the component
    */
-  constructor() {
+  constructor(private searchService: SearchService) {
+    this.apiUrl = '';
     this.iconPosition = 'right';
     this.placeholder = 'Search...';
     this.wFull = false;
@@ -111,7 +124,8 @@ export class SpsInputSearchComponent implements OnInit {
     this.errorMessage = '';
     this.disabled = false;
     this.floatLabel = false;
-    this.changeText = new EventEmitter<string | null>();
+    this.changeText = new EventEmitter<unknown>();
+    this.searchResult = new EventEmitter<unknown>();
     this.helperId = `input-helper-${Math.floor(Math.random() * 10000)}`;
   }
 
@@ -123,14 +137,34 @@ export class SpsInputSearchComponent implements OnInit {
    * @returns {void}
    */
   public ngOnInit(): void {
+    if (!this.apiUrl) {
+      throw new Error('apiUrl es requerido para SpsInputSearchComponent');
+    }
     this.inputText.valueChanges
-      .pipe(debounceTime(300))
-      .subscribe((value: string | null) => {
-        if (value !== null) {
-          this.icon = value ? 'pi pi-times' : 'pi pi-search'; // Change the icon to a close icon if the input has a value
-          if (this.inputText.valid) {
-            this.changeText.emit(value);
+      .pipe(
+        debounceTime(300),
+        distinctUntilChanged(),
+        switchMap((query: string | null) => {
+          if (!query || query.length < 3) {
+            return of({});
           }
+          if (this.inputText.valid) {
+            this.changeText.emit(query);
+          }
+          this.errorMessage = '';
+          return this.searchService.search(query, this.apiUrl).pipe(
+            catchError(() => {
+              this.errorMessage =
+                'Ocurrió un error al realizar la búsqueda. Por favor, inténtalo de nuevo.';
+              return of({});
+            }),
+          );
+        }),
+      )
+      .subscribe((value: unknown) => {
+        if (value !== null) {
+          this.icon = value ? 'pi pi-times' : 'pi pi-search';
+          this.searchResult.emit(value);
         }
       });
 
