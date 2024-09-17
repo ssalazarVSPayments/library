@@ -12,6 +12,7 @@ import { ToastModule } from 'primeng/toast';
 import { TreeNodeDropEvent } from 'primeng/tree';
 import { InputTextModule } from 'primeng/inputtext';
 import { SpsTreeComponent } from 'spartansLibrary';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-layout-tree',
@@ -23,6 +24,7 @@ import { SpsTreeComponent } from 'spartansLibrary';
     DialogModule,
     InputTextModule,
     SpsTreeComponent,
+    ModalComponent,
   ],
   templateUrl: './layout-tree.component.html',
   styleUrl: './layout-tree.component.scss',
@@ -46,7 +48,10 @@ export class LayoutTreeComponent implements OnInit {
 
   public onNodeSelect(event: TreeNode): void {
     console.log('onSelectNode -> ', { event });
+    console.log(this.isDialogVisible);
     this.selectedNode = event;
+    console.log('prueba');
+    console.log(this.selectedNode);
   }
 
   public onNodeExpand(event: TreeNode): void {

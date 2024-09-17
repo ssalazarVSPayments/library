@@ -1,42 +1,20 @@
-<sps-tree
-  [nodes]="nodes"
-  [itemsMenu]="itemsMenu"
-  [draggable]="true"
-  [canAdd]="true"
-  emptyMessage="No se encontraron resultados"
-  (selectNode)="onNodeSelect($event)"
-  (expandNode)="onNodeExpand($event)"
-  (dropNode)="onDropNode($event)"
-  (addClick)="onAddClicked($event)"
-></sps-tree>
-
-<p-contextMenu #acm [model]="itemsAddMenu" />
-<p-toast position="top-center" />
-<p-confirmDialog />
-<app-modal
-  [(isDialogVisible)]="isDialogVisible"
-  [dialogHeader]="dialogHeader"
-  [isModalDelete]="isModalDelete"
-  [selectedNode]="selectedNode"
-></app-modal>
-<!-- <p-dialog
-  [header]="dialogHeader"
+<p-dialog
+  [header]="dialogHeader()"
   [modal]="true"
   [(visible)]="isDialogVisible"
   [style]="{ width: '25rem' }"
 >
   <div class="flex flex-column gap-2">
-    @if (!isModalDelete) {
+    @if (!isModalDelete()) {
       <label for="name">Nombre</label>
       <input pInputText id="name" aria-describedby="name-help" />
       <small id="name-help"> Máximo 120 caracteres. </small>
     } @else {
-      
       <div class="p-dialog-content flex flex-row gap-2 dialog-padding">
         <i class="pi pi-exclamation-triangle p-confirm-dialog-icon"></i>
         <span pInputText class="p-confirm-dialog-message hide-padding-border"
           >¿Está seguro que desea eliminar a
-          {{ selectedNode?.data.name }}?</span
+          {{ selectedNode()?.data.name }}?</span
         >
       </div>
     }
@@ -45,8 +23,8 @@
     <p-button
       label="Cancelar"
       [outlined]="true"
-      (onClick)="isDialogVisible = false"
+      (onClick)="isDialogVisible.set(false)"
     />
     <p-button label="Guardar" (onClick)="updateNode()" />
   </div>
-</p-dialog> -->
+</p-dialog>
